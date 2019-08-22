@@ -25,7 +25,7 @@ struct node{
 };
 
 node merge(node a, node b){
-  return node(a.rock +b.rock, a.paper+b.paper, a.scisor+b.scisor);
+  return node(a.rock+b.rock, a.paper+b.paper, a.scisor+b.scisor);
 }
 
 struct segtree{
@@ -33,16 +33,16 @@ struct segtree{
   int lazy[MAXS*4];
 
   void push(int no, int l, int r){
-    if(l == r){
-      lazy[no*2] = lazy[no];
-      lazy[no*2+1] = lazy[no];
+    if(l != r){
+      lazy[no*2] += lazy[no];
+      lazy[no*2+1] += lazy[no];
     }
     if(lazy[no]%3 == 1){
+      swap(tree[no].rock, tree[no].paper);
       swap(tree[no].rock, tree[no].scisor);
-      swap(tree[no].paper, tree[no].scisor);
     }else if(lazy[no]%3 == 2){
-      swap(tree[no].paper, tree[no].scisor);
       swap(tree[no].rock, tree[no].scisor);
+      swap(tree[no].paper, tree[no].rock);
     }
     lazy[no] = 0;
   }
@@ -51,7 +51,7 @@ struct segtree{
   void build(int no, int l, int r){
     lazy[no] = 0;
     if(l == r){
-      tree[no] = node();
+      tree[no] = node(1, 0, 0);
     }else{
       int mid = (l+r)/2;
       build(no*2, l, mid);
@@ -62,6 +62,7 @@ struct segtree{
   void update(int no, int l, int r, int x, int y){
     if(l > y || r < x){
       push(no, l, r);
+      return;
     }else if(r <= y && l >= x){
       lazy[no]++;
       push(no, l, r);
@@ -70,7 +71,7 @@ struct segtree{
       int mid = (l+r)/2;
       update(no*2, l, mid, x, y);
       update(no*2+1, mid+1, r, x, y);
-      merge(tree[no*2], tree[no*2+1]);
+      tree[no] = merge(tree[no*2], tree[no*2+1]);
     }
   }
   node query(int no, int l, int r, int x, int y){
@@ -89,9 +90,11 @@ struct segtree{
 
 
 int main(){
-  while(cin >> n){
-    cin >>
-    int a, b, c;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  while(cin >> n >> q){
+    char a;
+    int b, c;
     root.build(1, 0, n-1);
     for(int i = 0; i < q; ++i){
       cin >> a >> b >> c;
@@ -102,6 +105,6 @@ int main(){
         root.update(1, 0, n-1, b-1, c-1);
       }
     }
-
+    cout << endl;
   }
 }
