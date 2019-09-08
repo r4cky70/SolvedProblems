@@ -15,9 +15,17 @@ typedef vector < int > vi;
 typedef pair < int, int > pii;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-int n, m, k;
+int n;
+pii arr[MAXS];
+ll dp[107][MAXS];
 
 int main(){
-  cin >> n >> m >> k;
-  
+  cin >> n;
+  int a, b;
+  for(int i = 0; i < n; ++i){
+    cin >> a >> b;
+    arr[i] = mp(a, b);
+  }
+  sort(arr, arr+n);
+  for(int i = 0; i < )
 }

@@ -15,9 +15,10 @@ typedef vector < int > vi;
 typedef pair < int, int > pii;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-int n, m, k;
+int n, m;
+pii arr[MAXS];
+ll dp[107][10007];
 
 int main(){
-  cin >> n >> m >> k;
   
 }

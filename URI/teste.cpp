@@ -13,14 +13,5 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 int main(){
-  INP; OUT;
-  string s, ans = "";
-  while(cin >> s){
-    for(int i = 0; i < s.size(); ++i){
-      if(s[i] == '|') s[i] = '\n';
-      ans += s[i];
-    }
-
-  }
-  cout << ans;
+  cout << "testando\n";
 }

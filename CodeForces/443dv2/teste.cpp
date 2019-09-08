@@ -15,9 +15,23 @@ typedef vector < int > vi;
 typedef pair < int, int > pii;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-int n, m, k;
+int n;
+int d[MAXS], t[MAXS];
+
 
 int main(){
-  cin >> n >> m >> k;
-  
+  cin >> n;
+  int a, b;
+  for(int i = 0 ; i < n; ++i){
+    cin >> a >> b;
+    d[i] = a; t[i] = b;
+  }
+  int ans = 0;
+  for(int i = 0; i < n; ++i){
+    while(ans<d[i]){
+      if(ans < d[i]) ++ans;
+      else d[i]+=t[i];
+    }
+  }
+  cout << ans << endl;
 }
