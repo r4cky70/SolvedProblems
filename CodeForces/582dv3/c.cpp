@@ -16,26 +16,40 @@ typedef pair < int, int > pii;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 const int INF = (int)__builtin_inf();
-const int MAXS = 100007;
+const int MAXS = 150007;
 
-int n;
-int arr[MAXS];
+ll t, n, m;
+unordered_set <ll> res;
+vll yo;
 
 void solve(){
-  cin >> n;
-  for(int i = 0; i < n; ++i){
-    cin >> arr[i];
-  }
-  sort(arr, arr+n);
-  int ans = INF;
-  for(int i = 0; i < n; ++i){
-    int temp = 0;
-    for(int j = 0; j < n; ++j){
-      if((arr[i] + arr[j])%2) temp++;
+  cin >> t;
+  while(t--){
+    cin >> n >> m;
+    ll aux = m;
+    ll sum = 0;
+    ll temp = aux%10;
+    while(res.find(temp) == res.end()){
+      res.insert(temp);
+      yo.pb(temp);
+      aux += m;
+      sum+=temp;
+      temp = aux%10;
     }
-    ans = min(ans, temp);
+    ll t = n/m/res.size();
+    ll x = n/m%res.size();
+    ll ans = t*sum;
+    int cont = 0;
+    for(auto it : yo){
+      cont++;
+      if(cont > x)break;
+      ans+=it;
+    }
+    cout << ans << "\n";
+    res.clear();
+    yo.clear();
   }
-  cout << ans;
+  
 
 }
 

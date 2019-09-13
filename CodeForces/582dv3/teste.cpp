@@ -18,24 +18,9 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
-int n;
-int arr[MAXS];
-
 void solve(){
-  cin >> n;
-  for(int i = 0; i < n; ++i){
-    cin >> arr[i];
-  }
-  sort(arr, arr+n);
-  int ans = INF;
-  for(int i = 0; i < n; ++i){
-    int temp = 0;
-    for(int j = 0; j < n; ++j){
-      if((arr[i] + arr[j])%2) temp++;
-    }
-    ans = min(ans, temp);
-  }
-  cout << ans;
+  cout << 1024/14 << endl;
+  
 
 }
 
