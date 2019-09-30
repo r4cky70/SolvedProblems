@@ -18,9 +18,29 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
+int arr[MAXS];
+int cost[MAXS];
+int n, t;
+
+
+
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+  cin >> t;
+  while(t--){
+    cin >> n;
+    for(int i = 0; i < n; ++i){
+      cin >> arr[i] >> cost[i];
+    }
+    int ans = 0;
+    for(int i = 1; i < n; ++i){
+      if(arr[i] == arr[i-1]){
+        if(cost[i] > cost[i-1]){
+          arr[i-1]++;
+        }
+      }
+    }
+
+  }
   
 
 }

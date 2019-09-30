@@ -18,9 +18,26 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
+ll multi(ll a, ll b){
+  return (a % MOD) * (b % MOD) % MOD;
+}
+ll adi(ll a, ll b){
+  return (a % MOD) + (b % MOD) % MOD;
+}
+ll sub(ll a, ll b){
+  return (((a % MOD) - (b % MOD) % MOD) + MOD) % MOD;
+}
+
+ll fe(ll a, ll b){
+  if(b == 0) return 1;
+  if(b == 1) return a % MOD;
+  ll x = fe(a, b/2);
+  if(b%2) return multi(multi(x, x), a);
+  else return multi(x, x);
+}
+
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+
   
 
 }

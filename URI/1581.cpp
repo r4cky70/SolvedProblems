@@ -19,9 +19,24 @@ const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
-  
+  string arr[107];
+  int t, n;
+  cin >> t;
+  while(t--){
+    cin >> n;
+    for(int i = 0; i < n; ++i){
+      cin >> arr[i];
+    }
+    bool flag = true;
+    for(int i = 0; i < n-1; ++i){
+      if(arr[i] != arr[i+1]) flag = false;
+    }
+    if(flag){
+      cout << arr[0] << "\n";
+    }else{
+      cout << "ingles\n";
+    }
+  }
 
 }
 

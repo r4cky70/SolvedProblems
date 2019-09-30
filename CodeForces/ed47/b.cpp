@@ -18,11 +18,42 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
-void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
-  
+bool func(char a, char b){
+  if(abs(a-b) <= 1) return a < b;
+  else{
+    return false;
+  }
+}
 
+void solve(){
+
+  string s;
+  cin >> s;
+  if(s.size() == 1){
+    cout << s << endl;
+    return;
+  }
+  int p1 = 0;
+  bool um = false;
+  bool dois = false;
+  for(int i = 0; i < s.size(); ++i){
+    if(s[i] == '1'){
+      um = true;
+    }
+    else if(s[i] == '2'){
+      dois = true;
+    }else if(s[i] == '0' && um && dois){
+      sort(s.begin()+p1, s.begin()+i);
+      um = false;
+      dois = false;
+      p1 = i; 
+    }else if(s[i] == '0' && !um && dois){
+      p1 = i;
+      dois = false;
+    }
+  }
+  if(um) sort(s.begin()+p1, s.end());
+  cout << s << endl;
 }
 
 int main(){

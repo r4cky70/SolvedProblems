@@ -16,28 +16,47 @@ typedef pair < int, int > pii;
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 const int INF = (int)__builtin_inf();
-const int MAXS = 100007;
+const int MAXS = 1007;
+
+int h, w;
+
+int r[MAXS], c[MAXS];
+
+int mx[MAXS][MAXS];
+const int MOD = 1000000007;
 
 void solve(){
-  int n;
-  string s;
-  cin >> n;
-  while(n--){
-    int ans = 0;
-    cin >> s;
-    string temp = "";
-    for(int i = 0; i < s.size(); ++i){
-      if(isdigit(s[i])){
-        temp+=s[i];
-      }else if(!isdigit(s[i]) && temp.size() > 0){
-        ans += stoi(temp);
-        temp = "";
-      }
+  cin >> h >> w;
+  bool flag = true;
+  for(int i = 0; i < h; ++i){
+    cin >> r[i];
+    for(int j = 0; j < r[i]; ++j){
+      if(mx[i][j] == 2) flag = false;
+      mx[i][j] = 1;
     }
-    if(temp.size() > 0) ans+=stoi(temp);
-    cout << ans << endl;
+    if(w > r[i]){
+      if(mx[i][r[i]] == 1) flag = false;
+      mx[i][r[i]] = 2;
+    } 
+  }for(int i = 0; i < w; ++i){
+    cin >> c[i];
+    for(int j = 0; j < c[i]; ++j){
+      if(mx[j][i] == 2) flag = false;
+      mx[j][i] = 1;
+    }
+    if(h > c[i]){
+      if(mx[c[i]][i] == 1) flag = false;
+      mx[c[i]][i] = 2;
+
+    } 
   }
-  
+  ll ans = 1;
+  for(int i = 0; i < h; ++i){
+    for(int j = 0; j < w; ++j){
+      if(mx[i][j] == 0) ans = ans*2 %MOD;
+    }   
+  }
+  cout << (!flag ? 0 : ans) << endl;
 
 }
 

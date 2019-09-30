@@ -18,9 +18,28 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
+int n;
+map<ll, ll> dic;
+int t;
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+  cin >> t;
+  while(t--){
+    dic.clear();
+    cin >> n;
+    int a;
+    for(int i = 0; i < n; ++i){
+      cin >> a;
+      dic[a]++;
+    }
+    bool flag = false;
+    for(auto it : dic){
+      dic[it.first*2] += (it).second/2;
+      if(it.first == 2048 && it.second > 0){
+        flag = true;
+      }
+    }
+    cout << (flag ? "YES\n" : "NO\n");
+  }
   
 
 }

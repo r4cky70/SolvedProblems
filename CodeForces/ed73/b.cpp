@@ -19,8 +19,22 @@ const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+  int n;
+  cin >> n;
+  bool flag = false;
+  for(int i = 0; i < n; ++i){
+    flag = (i%2 ? true : false);
+    for(int j = 0; j < n; ++j){
+      if(flag){
+        cout << "W";
+        flag = false;
+      }else{
+        cout << "B";
+        flag = true;
+      }
+    }
+    cout << "\n";
+  }
   
 
 }

@@ -18,11 +18,27 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
-void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
-  
+int arr[MAXS], job[MAXS];
 
+
+
+void solve(){
+  int n, l, a;
+  cin >> n >> l >> a;
+  for(int i = 0; i < n; ++i){
+    cin >> arr[i] >> job[i];
+  }
+  int ans = 0;
+  int time = 0;
+  ans += arr[0] / a;
+  time = arr[0] + job[0];
+  for(int i = 1; i < n; ++i){
+    ans += (arr[i] - time)/a;
+    time = arr[i] + job[i];
+  }
+  ans += (l - time) / a;
+  cout << ans << endl;
+  
 }
 
 int main(){

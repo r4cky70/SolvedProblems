@@ -18,10 +18,31 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
+map<string, vector<string>> dic;
+
+
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+  int t;
+  dic["lagarto"].pb("spock");
+  dic["lagarto"].pb("papel");
+  dic["spock"].pb("tesoura");
+  dic["spock"].pb("pedra");
+  dic["pedra"].pb("lagarto");
+  dic["pedra"].pb("tesoura");
+  dic["papel"].pb("pedra");
+  dic["papel"].pb("spock");
+  dic["tesoura"].pb("papel");
+  dic["tesoura"].pb("lagarto");
   
+
+  cin >> t;
+  string s1, s2;
+  while(t--){
+    cin >> s1 >> s2;
+    if(s1 == s2) cout << "empate\n";
+    else if(dic[s1][0] == s2 || dic[s1][1] == s2) cout << "rajesh\n";
+    else cout << "sheldon\n";
+  }
 
 }
 

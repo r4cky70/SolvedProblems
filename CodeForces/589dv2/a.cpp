@@ -19,8 +19,32 @@ const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+  string s1; int s2;
+  cin >> s1;
+  cin >> s2;
+  
+  int vis[10];
+  bool ans = false;
+  while(true){
+    memset(vis, 0, sizeof vis);
+    bool flag = true;
+    for(int i = 0; i < s1.size(); ++i){
+      if(vis[s1[i]-'0'] == true){
+        flag = false;
+        break;
+      } 
+      vis[s1[i]-'0'] = true;
+    }
+    if(flag){
+      cout << s1 << endl;
+      break;
+    }
+    int t = stoi(s1)+1;
+    if(t > s2) break;
+    s1 = to_string(t); 
+  }
+  cout << "-1" << endl;
+  
   
 
 }

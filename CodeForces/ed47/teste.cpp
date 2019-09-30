@@ -19,8 +19,7 @@ const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+
   
 
 }

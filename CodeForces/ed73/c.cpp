@@ -19,8 +19,19 @@ const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
 void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
+  int t, c, m, x;
+  cin >> t;
+  while(t--){
+    cin >> c >> m >> x;
+    int ans = 0;
+    ans = min(min(c, m), x);
+    c -= ans;
+    m -= ans;
+    ans += min(min(c, m), ((c+m)/3));
+    cout << ans << "\n";
+    
+    
+  }
   
 
 }

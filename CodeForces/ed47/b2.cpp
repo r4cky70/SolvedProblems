@@ -18,11 +18,36 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int INF = (int)__builtin_inf();
 const int MAXS = 100007;
 
-void solve(){
-  string s = "123";
-  cout << (int)stoi(s) << endl;
-  
+ll os, f;
+char s[MAXS]; string str;
+vector<int> ans;
+ 
 
+void solve(){
+
+    scanf("%s", s); str = s;
+ 
+    for(int i = 0; i < str.size(); i++) {
+        if(str[i] == '0') ans.push_back(0);
+        else if(str[i] == '2') ans.push_back(2);
+        else os++;
+    }
+ 
+    for(int i = 0; i < ans.size(); i++) {
+        if(ans[i] == 2) {
+            while(os) {
+                os--;
+                printf("1");
+            }
+            printf("2");
+        }
+        else printf("0");
+    }
+    while(os) {
+        os--;
+        printf("1");
+    }
+    puts("");
 }
 
 int main(){
@@ -33,7 +58,7 @@ int main(){
   solve();
   cerr << "Time: " << 1.0*clock()/CLOCKS_PER_SEC << " s.\n";
 #else
-  ios::sync_with_stdio(false);cin.tie(0);
-  solve();
+  // ios::sync_with_stdio(false);cin.tie(0);
+  // solve();
 #endif
 }
