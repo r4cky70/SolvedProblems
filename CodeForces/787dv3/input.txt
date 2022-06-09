@@ -1,0 +1,11 @@
+5
+3 2
+cba
+4 5
+fgde
+7 5
+gndcafb
+4 19
+ekyv
+5 1000000000
+abkes
